@@ -37,19 +37,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // Archive the build artifacts
-            archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
-        }
-        success {
-            // Notify success (this is just a placeholder, adjust as needed)
-            echo 'Build and deployment successful!'
-        }
-        failure {
-            // Notify failure (this is just a placeholder, adjust as needed)
-            echo 'Build or deployment failed.'
-        }
-    }
 }
