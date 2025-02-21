@@ -6,6 +6,7 @@ pipeline {
             steps {
                 // Checkout the code from the repository
                 git 'https://github.com/PoojaSakha/var-configs.git'
+                echo 'git checkout done'
             }
         }
 
