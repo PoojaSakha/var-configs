@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository
-                git 'https://github.com/your_username/your_repository.git'
+                git 'https://github.com/PoojaSakha/var-configs.git'
             }
         }
 
