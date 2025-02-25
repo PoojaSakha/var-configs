@@ -10,18 +10,12 @@ pipeline {
             }
         }
 
-         stage('Get Version') {
-             steps {
-                  script {
-                       def version = sh(script: "grep '^version' build.gradle | awk '{print \$3}'", returnStdout: true).trim()
-                        echo "Current project version: ${version}"
-                      }
-                  }
-                }
-        stage('Build') {
+        stage('Get Version') {
             steps {
-                // Build the project using Gradle
-                sh './gradlew clean build'
+                script {
+                    def version = sh(script: "grep '^version' build.gradle | awk '{print \$3}'", returnStdout: true).trim()
+                    echo "Current project version: ${version}"
+                }
             }
         }
 
