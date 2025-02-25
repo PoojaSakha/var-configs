@@ -5,10 +5,19 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository
-                sh 'git clone https://github.com/PoojaSakha/var-configs.git'
+                git 'https://github.com/PoojaSakha/var-configs.git'
+                echo 'git checkout done'
             }
         }
 
+         stage('Get Version') {
+             steps {
+                  script {
+                       def version = sh(script: "grep '^version' build.gradle | awk '{print \$3}'", returnStdout: true).trim()
+                        echo "Current project version: ${version}"
+                      }
+                  }
+                }
         stage('Build') {
             steps {
                 // Build the project using Gradle
