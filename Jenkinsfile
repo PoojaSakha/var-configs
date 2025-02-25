@@ -17,7 +17,7 @@ pipeline {
                 script {
                     def version = sh(script: "grep '^version' var-configs/build.gradle | awk '{print \$3}'", returnStdout: true).trim()
                     echo "Current project version: ${version}"
-                    build job: 'job2', parameters: [string(name: 'VERSION', value: version)]
+                    build job: 'job2', parameters: [string(name: 'VERSION', value: versionss)]
                 }
             }
         }
