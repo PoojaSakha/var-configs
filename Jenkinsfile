@@ -4,16 +4,18 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from the repository
-                git 'https://github.com/PoojaSakha/var-configs.git'
-                echo 'git checkout done'
+                script {
+                    sh 'rm -rf var-configs'
+                    sh 'git clone https://github.com/PoojaSakha/var-configs.git'
+                    echo 'git checkout done'
+                }
             }
         }
 
         stage('Get Version') {
             steps {
                 script {
-                    def version = sh(script: "grep '^version' build.gradle | awk '{print \$3}'", returnStdout: true).trim()
+                    def version = sh(script: "grep '^version' var-configs/build.gradle | awk '{print \$3}'", returnStdout: true).trim()
                     echo "Current project version: ${version}"
                 }
             }
@@ -21,21 +23,18 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Run tests using Gradle
-                sh './gradlew test'
+                sh 'cd var-configs && ./gradlew test'
             }
         }
 
         stage('Package') {
             steps {
-                // Package the application
-                sh './gradlew bootJar'
+                sh 'cd var-configs && ./gradlew bootJar'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Deploy the application (this is just a placeholder, adjust as needed)
                 echo 'Deploying application...'
             }
         }
