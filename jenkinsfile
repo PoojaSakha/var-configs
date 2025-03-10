@@ -20,7 +20,7 @@ pipeline {
                     writeFile file: 'callback_url.txt', text: callbackURL
 
                     // Call a script to send the POST request
-                    sh './send_webhook.sh'
+                    sh './jenkins_webhook.sh'
 
                     echo "Waiting for POST to ${callbackURL}"
                     data = waitForWebhook hook
