@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 script {
-                    hook = registerWebhook(token: "my_webhook").
+                    hook = registerWebhook(token: "my_webhook")
                     callbackURL = hook.url
 
                     // Write the callback URL to a file
