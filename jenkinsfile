@@ -24,6 +24,7 @@ pipeline {
 
                     echo "Waiting for POST to ${callbackURL}"
                     sh './jenkins_webhook.sh'
+                    echo "added to sh file webhook url"
                     data = waitForWebhook hook
 
                     echo "Webhook called with data: ${data}"
