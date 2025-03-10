@@ -13,8 +13,8 @@ pipeline {
             }
             steps {
                 script {
-                    hook = registerWebhook()
-                    callbackURL = hook.url
+                   // hook = registerWebhook()
+                    callbackURL = "http://localhost:8080/webhook"
 
                     // Write the callback URL to a file
                     writeFile file: 'callback_url.txt', text: callbackURL
