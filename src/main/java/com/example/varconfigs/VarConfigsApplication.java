@@ -8,6 +8,7 @@ public class VarConfigsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VarConfigsApplication.class, args);
+       System.out.println("prints keep");
     }
 
 }
