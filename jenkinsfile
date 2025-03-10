@@ -19,8 +19,8 @@ pipeline {
                     // Write the callback URL to a file
                     writeFile file: 'callback_url.txt', text: callbackURL
 
-                    // Call a remote system to start execution, passing the callback url
-                    sh "curl -X POST -H 'Content-Type: application/json' -d '{\"callback\":\"${callbackURL}\"}' http://localhost:8080/webhook"
+                    // Call a script to send the POST request
+                    sh './send_webhook.sh'
 
                     echo "Waiting for POST to ${callbackURL}"
                     data = waitForWebhook hook
