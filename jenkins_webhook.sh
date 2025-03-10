@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Jenkins credentials
-JENKINS_USER="pooja"
+JENKINS_USER="pooja aurade"
 JENKINS_TOKEN="112c8b5db715317b254b067d5f08102c9a"
 JENKINS_URL="http://localhost:8080"
 
