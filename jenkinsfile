@@ -23,7 +23,7 @@ pipeline {
                     sh "curl -X POST -H 'Content-Type: application/json' -d '{\"callback\":\"${callbackURL}\"}' http://localhost:8080/webhook"
 
                     echo "Waiting for POST to ${callbackURL}"
-                    data = waitForWebhook hook
+                    data = waitForWebhook()
 
                     echo "Webhook called with data: ${data}"
                 }
