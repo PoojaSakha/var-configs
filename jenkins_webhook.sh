@@ -11,5 +11,8 @@ CRUMB=$(curl -u "${JENKINS_USER}:${JENKINS_TOKEN}" -s "${JENKINS_URL}/crumbIssue
 # Print the crumb to verify it is retrieved correctly
 echo "Crumb: ${CRUMB}"
 
+# Read the callback URL from the file
+CALLBACK_URL=$(cat callback_url.txt)
+
 # Make the POST request with the crumb
-curl -X POST -H 'Content-Type: application/json' -H "Jenkins-Crumb:${CRUMB}" -d '{"callback":"http://localhost:8080/webhook-step/c2901d1b-c68c-438d-b11b-c59a64be270f"}' "${JENKINS_URL}/webhook"
+curl -X POST -H 'Content-Type: application/json' -H "Jenkins-Crumb:${CRUMB}" -d "{\"callback\":\"${CALLBACK_URL}\"}" "${JENKINS_URL}/webhook"
