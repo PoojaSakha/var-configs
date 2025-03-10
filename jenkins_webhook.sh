@@ -2,7 +2,7 @@
 
 # Jenkins credentials
 JENKINS_USER="pooja"
-JENKINS_TOKEN="11b87a4bd0091b2e64adaf4c7358a867cd"
+JENKINS_TOKEN="112c8b5db715317b254b067d5f08102c9a"
 JENKINS_URL="http://localhost:8080"
 
 # Get the crumb
