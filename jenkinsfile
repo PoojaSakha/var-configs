@@ -13,17 +13,21 @@ pipeline {
             }
             steps {
                 script {
-                   // hook = registerWebhook()
+                    // Use a static webhook URL
                     callbackURL = "http://localhost:8080/webhook"
 
                     // Write the callback URL to a file
                     writeFile file: 'callback_url.txt', text: callbackURL
 
                     // Call a remote system to start execution, passing the callback url
-                    sh "curl -X POST -H 'Content-Type: application/json' -d '{\"callback\":\"${callbackURL}\"}' http://localhost:8080/webhook"
+                    sh "curl -X POST -H 'Content-Type: application/json' -d '{\"callback\":\"${callbackURL}\"}' ${callbackURL}"
 
                     echo "Waiting for POST to ${callbackURL}"
-                    data = waitForWebhook()
+                    // Simulate waiting for webhook by sleeping for a short period
+                    sleep(time: 1, unit: "MINUTES")
+
+                    // Simulate receiving data from webhook
+                    data = '{"status":"success"}'
 
                     echo "Webhook called with data: ${data}"
                 }
